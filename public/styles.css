@@ -1,0 +1,41 @@
+body {
+	background-color: #eee;
+	font-family: 'Roboto', sans-serif;
+}
+
+.header {
+	background-color: orange;
+	color: #372e29;
+	padding: 5% 4%;
+	width: 100%;
+}
+
+h1 {
+	margin: 0;
+	padding: 0;
+}
+
+.tagline {
+	color: #fff;
+	margin: 0;
+	padding: 0;
+}
+
+.chat-window {
+	background-color: #fff;
+	border: 2px solid #c1c1c3;
+	height: 20em;
+	margin: 0 auto;
+	padding: 1% 2%;
+	width: 90%;
+}
+
+.msg-obj {
+	margin-bottom: 0.5em;
+}
+
+.disp-user {
+	color: orange;
+}
+
+.displ-msg {}
