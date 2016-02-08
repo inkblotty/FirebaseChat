@@ -18,5 +18,5 @@ fireData.on('child_added', function(snapshot) {
 });
 
 function displayChatMessage(name, text) {
-	$('.chat-window').append('<div class="msg-obj"><span class="disp-user">' + name + ': </span>' + '<span class="disp-msg">' + text + '</span></div>');
+	$('.chat-window').append('<div class="msg-obj"><span class="disp-user">' + name + '</span> : ' + '<span class="disp-msg">' + text + '</span></div>');
 }
