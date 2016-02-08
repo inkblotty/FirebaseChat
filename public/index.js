@@ -1,14 +1,13 @@
-var static = require('node-static');
+var express = require('express');
+var app = express();
+var path = require('path');
 var port = 3000;
-var http = require('http');
+var http = require('http').Server(app);
 
-var file = new static.Server('./public', {
-	cache: 30,
-	gzip: true
+app.get('/', function(req, res) {
+	res.send(path.join(__dirname + '/index.html'));
 });
 
-http.createServer(function(req, res) {
-	req.addListener('end', function() {
-		file.serve(req,res);
-	}).resume();
-}).listen(port);
+http.listen(3000, function() {
+	console.log('listening on *:3000');
+});
