@@ -16,13 +16,17 @@ $('.message').keypress(function(e) {
 	};
 });
 
+/*
+socket.on('new connection', function(user) {
+	displayStatusMessage(user + ' entered the room');
+});*/
+
 socket.on('chat message', function(msg) {
 	displayChatMessage(msg[0], msg[1]);
 });
 
-socket.on('disconnect message', function() {
-	console.log('user disconnected');
-	displayStatusMessage('user' + ' disconnected');
+socket.on('disconnect message', function(user) {
+	displayStatusMessage(user + ' disconnected');
 });
 
 /*
