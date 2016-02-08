@@ -1,3 +1,4 @@
+var socket = io();
 var fireData = new Firebase('https://l0j8qken6y1.firebaseio-demo.com/');
 
 $('.message').keypress(function(e) {
