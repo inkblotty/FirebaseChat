@@ -1,6 +1,0 @@
-{
-	"name": "firebase-socket-chat",
-	"version": "0.0.1",
-	"description": "chat app using Firebase and Socket.io",
-	"dependencies": {}
-}
