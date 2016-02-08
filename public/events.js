@@ -17,8 +17,12 @@ $('.message').keypress(function(e) {
 });
 
 socket.on('chat message', function(msg) {
-	console.log(msg);
 	displayChatMessage(msg[0], msg[1]);
+});
+
+socket.on('disconnect message', function() {
+	console.log('user disconnected');
+	displayStatusMessage('user' + ' disconnected');
 });
 
 /*
@@ -31,4 +35,8 @@ fireData.on('child_added', function(snapshot) {
 
 function displayChatMessage(name, text) {
 	$('.chat-window').append('<div class="msg-obj"><span class="disp-user">' + name + '</span> : ' + '<span class="disp-msg">' + text + '</span></div>');
+}
+
+function displayStatusMessage(text) {
+	$('.chat-window').append('<div class="update">' + text + '</div>');
 }
