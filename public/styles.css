@@ -51,10 +51,12 @@ h1 {
 
 .update {
 	color: #a6917b;
+	margin: 1% auto;
 }
 
 .input-sect {
 	background-color: orange;
+	border: 2px solid orange;
 	font-size: 1.1em;
 	margin: 1% 3% 0 3%;
 	padding: 1% 2%;
