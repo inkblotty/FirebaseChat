@@ -5,19 +5,23 @@ socket.on('new connection', function() {
 	if (!socket.user) {
 		var user = prompt('Choose a username');
 		socket['user'] = user;
+		$('#username').html(user);
+
+		socket.emit('update status', user + ' has entered the room');
 	};
-
-	$('#username').html(user);
-
-	displayStatusMessage(user + ' entered the room');
 });
 
 socket.on('chat message', function(msg) {
+	//console.log('the window is supposed to display message now');
 	displayChatMessage(msg[0], msg[1]);
 });
 
-socket.on('disconnect message', function(user) {
-	displayStatusMessage(user + ' disconnected');
+socket.on('update status', function(msg) {
+	displayStatusMessage(msg);
+});
+
+socket.on('disconnect message', function() {
+	displayStatusMessage('a user disconnected');
 });
 
 /*

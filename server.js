@@ -16,8 +16,13 @@ io.on('connection', function(socket) {
 	socket.on('chat message', function(msg) {
 		io.emit('chat message', msg);
 	});
+
+	socket.on('update status', function(msg) {
+		io.emit('update status', msg);
+	});
+
 	socket.on('disconnect', function() {
-		io.emit('disconnect message', socket.user);
+		io.emit('disconnect message');
 	});
 });
 
