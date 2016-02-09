@@ -1,5 +1,5 @@
 var socket = io();
-var fireData = new Firebase('https://l0j8qken6y1.firebaseio-demo.com/');
+//var fireData = new Firebase('https://l0j8qken6y1.firebaseio-demo.com/');
 
 $('.message').keypress(function(e) {
 	if (e.keyCode === 13) {
@@ -9,7 +9,7 @@ $('.message').keypress(function(e) {
 
 		socket.emit('chat message', [name, msg]);
 
-		fireData.push(newObj);
+		//fireData.push(newObj);
 		$('.message').val('');
 
 		return false;
