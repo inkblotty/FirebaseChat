@@ -1,6 +1,5 @@
 {
   "name": "firebase-socket-chat",
-  "description": "a simple chat app made with socket.io and node",
   "version": "0.0.1",
   "main": "server.js",
   "scripts": {
