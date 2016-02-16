@@ -7,12 +7,12 @@ socket.on('new connection', function() {
 		socket['user'] = user;
 		$('#username').html(user);
 
+		currentUsers.push({user: user});
 		socket.emit('update status', user + ' has entered the room');
 	};
 });
 
 socket.on('chat message', function(msg) {
-	//console.log('the window is supposed to display message now');
 	displayChatMessage(msg[0], msg[1]);
 });
 
@@ -21,7 +21,7 @@ socket.on('update status', function(msg) {
 });
 
 socket.on('disconnect message', function() {
-	displayStatusMessage('a user disconnected');
+	roleCall(socket['user']);
 });
 
 /*
@@ -31,6 +31,9 @@ fireData.on('child_added', function(snapshot) {
 	displayChatMessage(message.name, message.text);
 });
 */
+
+var currentUsers = [];
+var newCurrent = [];
 
 $('.message').keypress(function(e) {
 	if (e.keyCode === 13) {
@@ -46,6 +49,23 @@ $('.message').keypress(function(e) {
 		return false;
 	};
 });
+
+function roleCall(username) {
+	currentUsers.forEach(function(user) {
+		if (user.user === username) {
+			newCurrent.push(user);
+		}
+	});
+
+	currentUsers.forEach(function(old) {
+		if (newCurrent.indexOf(old) === -1) {
+			displayStatusMessage(old.user + ' bye bye toodles noodles');
+		}
+	});
+
+	currentUsers = newCurrent;
+	newCurrent = [];
+}
 
 function displayChatMessage(name, text) {
 	$('.chat-window').append('<div class="msg-obj"><span class="disp-user">' + name + '</span> : ' + '<span class="disp-msg">' + text + '</span></div>');
