@@ -21,6 +21,7 @@ socket.on('update status', function(msg) {
 });
 
 socket.on('disconnect message', function() {
+	newCurrent.push({user:socket['user']});
 	roleCall(socket['user']);
 });
 
@@ -51,12 +52,6 @@ $('.message').keypress(function(e) {
 });
 
 function roleCall(username) {
-	currentUsers.forEach(function(user) {
-		if (user.user === username) {
-			newCurrent.push(user);
-		}
-	});
-
 	currentUsers.forEach(function(old) {
 		if (newCurrent.indexOf(old) === -1) {
 			displayStatusMessage(old.user + ' bye bye toodles noodles');
