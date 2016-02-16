@@ -46,8 +46,9 @@ $('.message').keypress(function(e) {
 			msg = 'invalid input';
 			displayStatusMessage(socket.user, ': ' + msg);
 		}
-
-		socket.emit('chat message', [name, msg]);
+		else {
+			socket.emit('chat message', [name, msg]);
+		}
 
 		//fireData.push(newObj);
 		$('.message').val('');
