@@ -43,8 +43,8 @@ $('.message').keypress(function(e) {
 		//var newObj = {name: name, text: msg};
 
 		if (msg.indexOf('<script') > -1) {
-			msg = 'invalid input';
-			displayStatusMessage(socket.user, ': ' + msg);
+			msg = ' invalid input';
+			displayStatusMessage(socket.user, msg);
 		}
 		else {
 			msg = msg.replace(/(<([^>]+)>)/ig,"")
