@@ -47,6 +47,7 @@ $('.message').keypress(function(e) {
 			displayStatusMessage(socket.user, ': ' + msg);
 		}
 		else {
+			msg = msg.replace(/(<([^>]+)>)/ig,"")
 			socket.emit('chat message', [name, msg]);
 		}
 
