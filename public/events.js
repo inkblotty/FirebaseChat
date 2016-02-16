@@ -7,7 +7,7 @@ socket.on('new connection', function() {
 		socket['user'] = user;
 		$('#username').html(user);
 
-		currentUsers.push({user: user});
+		users.current.push({user: user});
 		socket.emit('update status', user + ' has entered the room');
 	};
 });
@@ -21,8 +21,9 @@ socket.on('update status', function(msg) {
 });
 
 socket.on('disconnect message', function() {
-	newCurrent.push({user:socket['user']});
-	roleCall(socket['user']);
+	/*users.newList.push({user:socket['user']});
+	roleCall(socket['user']);*/
+	displayStatusMessage('a user disconnected');
 });
 
 /*
@@ -33,8 +34,10 @@ fireData.on('child_added', function(snapshot) {
 });
 */
 
-var currentUsers = [];
-var newCurrent = [];
+var users = {
+	current: [],
+	newList: []
+};
 
 $('.message').keypress(function(e) {
 	if (e.keyCode === 13) {
@@ -59,14 +62,16 @@ $('.message').keypress(function(e) {
 });
 
 function roleCall(username) {
-	currentUsers.forEach(function(old) {
-		if (newCurrent.indexOf(old) === -1) {
+	users.current.forEach(function(old) {
+		if (users.newList.indexOf(old) === -1) {
 			displayStatusMessage(old.user + ' bye bye toodles noodles');
 		}
 	});
 
-	currentUsers = newCurrent;
-	newCurrent = [];
+	console.log('current users: ', users.current);
+
+	users.current = users.newList;
+	users.newList = [];
 }
 
 function displayChatMessage(name, text) {
