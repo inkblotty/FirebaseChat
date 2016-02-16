@@ -40,18 +40,18 @@ $('.message').keypress(function(e) {
 	if (e.keyCode === 13) {
 		var msg = $('.message').val();
 		var name = socket.user;
-		//var newObj = {name: name, text: msg};
 
 		if (msg.indexOf('<script') > -1) {
-			msg = ' invalid input';
-			displayStatusMessage(socket.user, msg);
+			msg = '';
+			displayStatusMessage(socket.user + ': invalid input');
 		}
 		else {
 			msg = msg.replace(/(<([^>]+)>)/ig,"")
 			socket.emit('chat message', [name, msg]);
+			//var newObj = {name: name, text: msg};
+			//fireData.push(newObj);
 		}
 
-		//fireData.push(newObj);
 		$('.message').val('');
 
 		return false;
