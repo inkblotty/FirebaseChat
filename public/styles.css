@@ -8,6 +8,10 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
+.hidden {
+	display: none;
+}
+
 .header {
 	color: #372e29;
 	margin: 0;
@@ -47,9 +51,12 @@ h1 {
 	width: 90%;
 }
 
-.roster img {
+.roster img, .chat-window img {
 	cursor: pointer;
 	height: auto;
+	position: fixed;
+	right: 2%;
+	top: 1%;
 	width: 2em;
 }
 
