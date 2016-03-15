@@ -21,12 +21,11 @@ socket.on('userJoined', function(data) {
 	displayStatusMessage(data.newuser + ' has joined');
 });
 
-function refreshRoster() {
-	$('#roster').html(users.join('<br/>'));
-}
-
 function updateRoster(newroster) {
-	console.log(newroster);
+	$('.roster-names').html('');
+	newroster.forEach(function(username) {
+		$('.roster-names').append('<div class="rost-name">' + username + '</div>');
+	});
 }
 
 socket.on('chat message', function(msg) {
@@ -51,6 +50,18 @@ fireData.on('child_added', function(snapshot) {
 });
 */
 
+function roleCall() {
+	socket.emit('show roster');
+}
+
+function displayChatMessage(name, text) {
+	$('.chat-window').append('<div class="msg-obj"><span class="disp-user">' + name + '</span> : ' + '<span class="disp-msg">' + text + '</span></div>');
+}
+
+function displayStatusMessage(text) {
+	$('.chat-window').append('<div class="update">' + text + '</div>');
+}
+
 $('.message').keypress(function(e) {
 	if (e.keyCode === 13) {
 		var msg = $('.message').val();
@@ -73,24 +84,6 @@ $('.message').keypress(function(e) {
 	};
 });
 
-function roleCall(username) {
-	/*
-	users.current.forEach(function(old) {
-		if (users.newList.indexOf(old) === -1) {
-			displayStatusMessage(old.user + ' bye bye toodles noodles');
-		}
-	});
-
-	console.log('current users: ', users.current);
-
-	users.current = users.newList;
-	users.newList = [];*/
-}
-
-function displayChatMessage(name, text) {
-	$('.chat-window').append('<div class="msg-obj"><span class="disp-user">' + name + '</span> : ' + '<span class="disp-msg">' + text + '</span></div>');
-}
-
-function displayStatusMessage(text) {
-	$('.chat-window').append('<div class="update">' + text + '</div>');
-}
+$('#roster-icon').on('click', function(e) {
+	roleCall();
+});

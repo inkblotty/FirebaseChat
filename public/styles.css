@@ -39,6 +39,20 @@ h1 {
 	width: 90%;
 }
 
+.roster {
+	background-color: #fff;
+	border: 2px solid #c1c1c3;
+	margin: 0.5% auto;
+	padding: 1% 2%;
+	width: 90%;
+}
+
+.roster img {
+	cursor: pointer;
+	height: auto;
+	width: 2em;
+}
+
 .msg-obj {
 	margin-bottom: 0.5em;
 }

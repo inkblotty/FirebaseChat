@@ -36,7 +36,7 @@ io.sockets.on('connection', function(socket) {
 			roster.push(user.username);
 		});
 		// then tell all clients
-		io.sockets.emit('updateRoster', {newroster: roster});
+		io.sockets.emit('updateRoster', roster);
 	});
 
 	socket.on('chat', function(data) {
@@ -46,15 +46,31 @@ io.sockets.on('connection', function(socket) {
 		io.sockets.emit('chat message', {from:u.username, msg:data.msg});
 	});
 
+	socket.on('show roster', function() {
+		var roster = [];
+		users.forEach(function(user) {
+			roster.push(user.username);
+		});
+		// then tell all clients
+		io.sockets.emit('updateRoster', roster);
+	});
+
 	socket.on('disconnect', function() {
 		var index = sockets.indexOf(socket);
-		var usr = users[index].username;
+		var usr = users[index].username || 'username error';
 
 		// remove from both sockets array
 		// and users array
 		sockets.splice(index, 1);
 		users.splice(index, 1);
 
+		var roster = [];
+		users.forEach(function(user) {
+			roster.push(user.username);
+		});
+		// then tell all clients
+
+		io.sockets.emit('updateRoster', roster);
 		io.sockets.emit('update status', usr + ' has disconnected');
 	});
 
