@@ -57,7 +57,7 @@ io.sockets.on('connection', function(socket) {
 
 	socket.on('disconnect', function() {
 		var index = sockets.indexOf(socket);
-		var usr = users[index].username || 'username error';
+		var usr = users[index] ? users[index].username : null;
 
 		// remove from both sockets array
 		// and users array

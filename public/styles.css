@@ -33,31 +33,47 @@ h1 {
 	padding: 0 2%;
 }
 
-.chat-window {
+.chat-window, .roster {
 	background-color: #fff;
 	border: 2px solid #c1c1c3;
 	height: 20em;
 	margin: 0 auto;
-	overflow-y: auto;
 	padding: 1% 2%;
 	width: 90%;
 }
 
+.chat-window, .roster-names {
+	overflow-y: auto;
+}
+
+/*
 .roster {
 	background-color: #fff;
 	border: 2px solid #c1c1c3;
 	margin: 0.5% auto;
 	padding: 1% 2%;
 	width: 90%;
+}*/
+
+.rost-top {
+	display: flex;
+	justify-content: space-between;
+}
+
+.roster h3 {
+	color: #a6917b;
+	font-weight: 300;
 }
 
 .roster img, .chat-window img {
 	cursor: pointer;
-	height: auto;
-	position: fixed;
-	right: 2%;
-	top: 1%;
+	height: 2em;
+	margin: 0;
 	width: 2em;
+}
+
+.chat-window img {
+	float: right;
 }
 
 .msg-obj {

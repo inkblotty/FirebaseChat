@@ -84,6 +84,16 @@ $('.message').keypress(function(e) {
 	};
 });
 
+$('.roster').addClass('hidden');
+
 $('#roster-icon').on('click', function(e) {
+	$('.chat-window').addClass('hidden');
+	$('.roster').removeClass('hidden');
+	roleCall();
+});
+
+$('#chat-icon').on('click', function(e) {
+	$('.chat-window').removeClass('hidden');
+	$('.roster').addClass('hidden');
 	roleCall();
 });
